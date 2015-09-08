@@ -1,3 +1,11 @@
+# v1.0.2
+## 09/08/2015
+
+2. [](#improved)
+  * Added blueprints for Grav Admin plugin
+3. [](#bugfix)
+  * Fixed `DebugBarException` ("twig" is not a registered collector)
+
 # v1.0.1
 ## 08/21/2015
 
