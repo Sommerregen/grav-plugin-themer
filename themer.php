@@ -1,6 +1,6 @@
 <?php
 /**
- * Themer v1.0.1
+ * Themer v1.0.2
  *
  * This plugin enables you to use different themes on one site
  * individual set per page or collection.
@@ -9,7 +9,7 @@
  * http://benjamin-regler.de/license/
  *
  * @package     Themer
- * @version     1.0.1
+ * @version     1.0.2
  * @link        <https://github.com/sommerregen/grav-plugin-themer>
  * @author      Benjamin Regler <sommerregen@benjamin-regler.de>
  * @copyright   2015, Benjamin Regler
@@ -80,7 +80,8 @@ class ThemerPlugin extends Plugin
         $this->grav['themes']->init();
 
         // Silent DebugBar error :: 'twig' is already a registered collector
-        if ($debug = $this->config->get('system.debugger.twig', false)) {
+        $enabled = $this->config->get('system.debugger.enabled');
+        if ($enabled && ($debug = $this->config->get('system.debugger.twig', false))) {
           $this->config->set('system.debugger.twig', false);
         }
 
@@ -91,7 +92,7 @@ class ThemerPlugin extends Plugin
         $twig->init();
 
         // Update TwigCollector for DebugBar
-        if ($debug) {
+        if ($enabled && $debug) {
           $twig->twig = new TraceableTwigEnvironment($twig->twig);
           $collector = $this->grav['debugger']->getCollector('twig');
           $collector->twig = $twig->twig;

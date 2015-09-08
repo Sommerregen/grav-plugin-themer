@@ -1,0 +1,13 @@
+# German
+de:
+  PLUGINS:
+    THEMER:
+      GLOBAL_CONFIG: "Globale Einstellungen"
+      PLUGIN_STATUS: "Plugin Status"
+
+# English
+en:
+  PLUGINS:
+    THEMER:
+      GLOBAL_CONFIG: "Global plugin configurations"
+      PLUGIN_STATUS: "Plugin status"

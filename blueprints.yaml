@@ -1,5 +1,5 @@
 name: Themer
-version: 1.0.1
+version: 1.0.2
 description: "This plugin enables you to use different themes on one site individual set per page or collection."
 icon: magic
 author:
@@ -16,17 +16,17 @@ form:
   fields:
     global:
       type: section
-      title: "Global plugin configurations"
+      title: PLUGINS.THEMER.GLOBAL_CONFIG
       underline: 1
 
       fields:
         enabled:
           type: toggle
-          label: "Plugin Status"
+          label: PLUGINS.THEMER.PLUGIN_STATUS
           highlight: 1
-          default: 0
+          default: 1
           options:
-            1: Enabled
-            0: Disabled
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
           validate:
             type: bool
