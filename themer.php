@@ -1,6 +1,6 @@
 <?php
 /**
- * Themer v1.0.2
+ * Themer v1.0.3
  *
  * This plugin enables you to use different themes on one site
  * individual set per page or collection.
@@ -9,7 +9,7 @@
  * http://benjamin-regler.de/license/
  *
  * @package     Themer
- * @version     1.0.2
+ * @version     1.0.3
  * @link        <https://github.com/sommerregen/grav-plugin-themer>
  * @author      Benjamin Regler <sommerregen@benjamin-regler.de>
  * @copyright   2015, Benjamin Regler
@@ -91,8 +91,9 @@ class ThemerPlugin extends Plugin
         $twig->twig_paths = [];
         $twig->init();
 
-        // Update TwigCollector for DebugBar
-        if ($enabled && $debug) {
+        // Update TwigCollector for DebugBar (deprecated since Grav v0.9.43+)
+        $deprecated = version_compare(GRAV_VERSION, '0.9.43', '<');
+        if ($deprecated && $enabled && $debug) {
           $twig->twig = new TraceableTwigEnvironment($twig->twig);
           $collector = $this->grav['debugger']->getCollector('twig');
           $collector->twig = $twig->twig;
