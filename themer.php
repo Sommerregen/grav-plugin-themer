@@ -91,8 +91,9 @@ class ThemerPlugin extends Plugin
         $twig->twig_paths = [];
         $twig->init();
 
-        // Update TwigCollector for DebugBar
-        if ($enabled && $debug) {
+        // Update TwigCollector for DebugBar (deprecated since Grav v0.9.43+)
+        $deprecated = version_compare(GRAV_VERSION, '0.9.43', '<');
+        if ($deprecated && $enabled && $debug) {
           $twig->twig = new TraceableTwigEnvironment($twig->twig);
           $collector = $this->grav['debugger']->getCollector('twig');
           $collector->twig = $twig->twig;
