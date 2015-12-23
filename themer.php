@@ -21,7 +21,6 @@ namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
 use Grav\Common\Page\Page;
-use Grav\Common\Twig\TraceableTwigEnvironment;
 
 /**
  * ThemerPlugin
@@ -40,7 +39,7 @@ class ThemerPlugin extends Plugin
   public static function getSubscribedEvents()
   {
     return [
-      'onPluginsInitialized' => ['onPluginsInitialized', 0],
+      'onPluginsInitialized' => ['onPluginsInitialized', 0]
     ];
   }
 
@@ -79,25 +78,11 @@ class ThemerPlugin extends Plugin
         // Reload themes to reflect changes
         $this->grav['themes']->init();
 
-        // Silent DebugBar error :: 'twig' is already a registered collector
-        $enabled = $this->config->get('system.debugger.enabled');
-        if ($enabled && ($debug = $this->config->get('system.debugger.twig', false))) {
-          $this->config->set('system.debugger.twig', false);
-        }
-
         // Reset and re-initialize Twig environment
         $twig = $this->grav['twig'];
         $twig->twig = null;
         $twig->twig_paths = [];
         $twig->init();
-
-        // Update TwigCollector for DebugBar (deprecated since Grav v0.9.43+)
-        $deprecated = version_compare(GRAV_VERSION, '0.9.43', '<');
-        if ($deprecated && $enabled && $debug) {
-          $twig->twig = new TraceableTwigEnvironment($twig->twig);
-          $collector = $this->grav['debugger']->getCollector('twig');
-          $collector->twig = $twig->twig;
-        }
       }
     }
   }
