@@ -12,7 +12,7 @@
  * @version     1.0.3
  * @link        <https://github.com/sommerregen/grav-plugin-themer>
  * @author      Benjamin Regler <sommerregen@benjamin-regler.de>
- * @copyright   2015, Benjamin Regler
+ * @copyright   2015-2016, Benjamin Regler
  * @license     <http://opensource.org/licenses/MIT>        MIT
  * @license     <http://opensource.org/licenses/GPL-3.0>    GPLv3
  */
