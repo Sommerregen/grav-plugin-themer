@@ -21,6 +21,9 @@ namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
 use Grav\Common\Page\Page;
+use Grav\Common\Data\Blueprints;
+
+use RocketTheme\Toolbox\Event\Event;
 
 /**
  * ThemerPlugin
@@ -39,7 +42,8 @@ class ThemerPlugin extends Plugin
   public static function getSubscribedEvents()
   {
     return [
-      'onPluginsInitialized' => ['onPluginsInitialized', 0]
+      'onPluginsInitialized' => ['onPluginsInitialized', 0],
+      'onGetPageTemplates' => ['onGetPageTemplates', 0],
     ];
   }
 
@@ -48,16 +52,21 @@ class ThemerPlugin extends Plugin
   */
   public function onPluginsInitialized()
   {
-    if ($this->isAdmin()) {
-      $this->active = false;
-      return;
-    }
-
-    // Activate plugin only if 'enabled' option is set true
     if ($this->config->get('plugins.themer.enabled')) {
-      $this->enable([
+      $events = [
         'onPageInitialized' => ['onPageInitialized', 1000]
-      ]);
+      ];
+
+      // Set admin specific events
+      if ($this->isAdmin()) {
+        $this->active = false;
+        $events = [
+          'onBlueprintCreated' => ['onBlueprintCreated', 0]
+        ];
+      }
+
+      // Register events
+      $this->enable($events);
     }
   }
 
@@ -84,6 +93,49 @@ class ThemerPlugin extends Plugin
         $twig->twig_paths = [];
         $twig->init();
       }
+    }
+  }
+
+  /**
+   * Add page template types.
+   */
+  public function onGetPageTemplates(Event $event)
+  {
+    if ($this->config->get('plugins.themer.enabled')) {
+      /** @var Types $types */
+      $types = $event->types;
+
+      /** @var Locator $locator */
+      $locator = $this->grav['locator'];
+
+      // Add theme templates to list
+      $templates = $this->config->get('plugins.themer.templates', '');
+      if ($templates && !is_array($templates)) {
+        $templates = explode(', ', $templates);
+      }
+
+      $templates = $templates ?: array_keys($this->grav['themes']->all());
+      foreach ($templates as $template) {
+        if ($path = $locator->findResource("themes://{$template}/templates/")) {
+          $types->scanTemplates($path);
+        }
+      }
+    }
+  }
+
+  /**
+   * Extend page blueprints with ArchivePlus configuration options.
+   *
+   * @param Event $event
+   */
+  public function onBlueprintCreated(Event $event)
+  {
+    /** @var Blueprints $blueprint */
+    $blueprint = $event['blueprint'];
+    if ($blueprint->get('form.fields.tabs')) {
+      $blueprints = new Blueprints(__DIR__ . '/blueprints/');
+      $extends = $blueprints->get($this->name);
+      $blueprint->extend($extends, true);
     }
   }
 

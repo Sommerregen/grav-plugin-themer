@@ -30,3 +30,17 @@ form:
             0: PLUGIN_ADMIN.DISABLED
           validate:
             type: bool
+
+        templates:
+          # Not ready for production yet... :'-(
+          # type: themeselect
+          # selectize: true
+          # multiple: true
+
+          type: selectize
+          label: PLUGINS.THEMER.TEMPLATES
+          help: PLUGINS.THEMER.TEMPLATES_HELP
+          placeholder: PLUGINS.THEMER.TEMPLATES_PLACEHOLDER
+
+          validate:
+            type: commalist
