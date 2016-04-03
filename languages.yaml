@@ -11,3 +11,10 @@ en:
     THEMER:
       GLOBAL_CONFIG: "Global plugin configurations"
       PLUGIN_STATUS: "Plugin status"
+      
+# Fench
+fr:
+  PLUGINS:
+    THEMER:
+      GLOBAL_CONFIG: "Configurations générales du plugin"
+      PLUGIN_STATUS: "Statut du plugin"
