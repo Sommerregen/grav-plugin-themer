@@ -27,3 +27,10 @@ en:
 
       THEME: "Theme"
       THEME_HELP: "Select a theme for the page"
+
+# Fench
+fr:
+  PLUGINS:
+    THEMER:
+      GLOBAL_CONFIG: "Configurations générales du plugin"
+      PLUGIN_STATUS: "Statut du plugin"
