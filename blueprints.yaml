@@ -1,5 +1,6 @@
 name: Themer
-version: 1.0.3
+version: 1.1.0-beta.1
+testing: true
 description: "This plugin enables you to use different themes on one site individual set per page or collection."
 icon: magic
 author:

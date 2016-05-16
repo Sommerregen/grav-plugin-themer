@@ -1,6 +1,6 @@
 <?php
 /**
- * Themer v1.0.3
+ * Themer v1.1.0-beta.1
  *
  * This plugin enables you to use different themes on one site
  * individual set per page or collection.
@@ -9,7 +9,7 @@
  * http://benjamin-regler.de/license/
  *
  * @package     Themer
- * @version     1.0.3
+ * @version     1.1.0-beta.1
  * @link        <https://github.com/sommerregen/grav-plugin-themer>
  * @author      Benjamin Regler <sommerregen@benjamin-regler.de>
  * @copyright   2015-2016, Benjamin Regler
