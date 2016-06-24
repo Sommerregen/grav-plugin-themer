@@ -1,11 +1,7 @@
 form:
-  validation: loose
-
   fields:
     tabs:
       type: tabs
-      active: 1
-
       fields:
         advanced:
           fields:
@@ -15,7 +11,7 @@ form:
                   type: themeselect
                   label: PLUGINS.THEMER.THEME
                   help: PLUGINS.THEMER.THEME_HELP
-                  '@config-default': "system.pages.theme"
+                  config-default@: system.pages.theme
                   toggleable: true
                   selectize:
                     create: true

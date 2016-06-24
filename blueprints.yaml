@@ -7,7 +7,7 @@ author:
   name: Sommerregen
   email: sommerregen@benjamin-regler.de
 homepage: https://github.com/sommerregen/grav-plugin-themer
-keywords: [themer, theme, plugin]
+keywords: ['themer', 'theme', 'plugin']
 docs: https://github.com/sommerregen/grav-plugin-themer/blob/master/README.md
 bugs: https://github.com/sommerregen/grav-plugin-themer/issues
 license: MIT/GPL
@@ -15,33 +15,24 @@ license: MIT/GPL
 form:
   validation: strict
   fields:
-    global:
-      type: section
-      title: PLUGINS.THEMER.GLOBAL_CONFIG
-      underline: 1
+    enabled:
+      type: toggle
+      label: PLUGINS.THEMER.PLUGIN_STATUS
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
 
-      fields:
-        enabled:
-          type: toggle
-          label: PLUGINS.THEMER.PLUGIN_STATUS
-          highlight: 1
-          default: 1
-          options:
-            1: PLUGIN_ADMIN.ENABLED
-            0: PLUGIN_ADMIN.DISABLED
-          validate:
-            type: bool
+    templates:
+      type: themeselect
+      label: PLUGINS.THEMER.TEMPLATES
+      help: PLUGINS.THEMER.TEMPLATES_HELP
+      placeholder: PLUGINS.THEMER.TEMPLATES_PLACEHOLDER
+      selectize: true
+      multiple: true
 
-        templates:
-          # Not ready for production yet... :'-(
-          # type: themeselect
-          # selectize: true
-          # multiple: true
-
-          type: selectize
-          label: PLUGINS.THEMER.TEMPLATES
-          help: PLUGINS.THEMER.TEMPLATES_HELP
-          placeholder: PLUGINS.THEMER.TEMPLATES_PLACEHOLDER
-
-          validate:
-            type: commalist
+      validate:
+        type: commalist
