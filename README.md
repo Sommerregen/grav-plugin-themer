@@ -46,6 +46,11 @@ The `Themer` plugin comes with some sensible default configuration, that are pre
 # Global plugin configurations
 
 enabled: true               # Set to false to disable this plugin completely
+
+# Default options for Themer configuration
+
+templates: ''               # Default theme templates to show in admin panel
+                            # (leave empty to show all page templates)
 ```
 
 If you need to change any value, then the best process is to copy the [themer.yaml](themer.yaml) file into your `users/config/plugins/` folder (create it if it doesn't exist), and then modify there. This will override the default settings.
@@ -88,7 +93,7 @@ Thanks!
 
 ## License
 
-Copyright (c) 2015 [Benjamin Regler][github]. See also the list of [contributors] who participated in this project.
+Copyright (c) 2015-2016 [Benjamin Regler][github]. See also the list of [contributors] who participated in this project.
 
 [Dual-licensed](LICENSE) for use under the terms of the [MIT][mit-license] or [GPLv3][gpl-license] licenses.
 

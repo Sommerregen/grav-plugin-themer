@@ -1,0 +1,20 @@
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.theme:
+                  type: themeselect
+                  label: PLUGINS.THEMER.THEME
+                  help: PLUGINS.THEMER.THEME_HELP
+                  config-default@: system.pages.theme
+                  toggleable: true
+                  selectize:
+                    create: true
+
+                  validate:
+                    type: string
