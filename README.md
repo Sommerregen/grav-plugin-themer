@@ -49,7 +49,7 @@ enabled: true               # Set to false to disable this plugin completely
 
 # Default options for Themer configuration
 
-templates: ""               # Default theme templates to show in admin panel
+templates: ''               # Default theme templates to show in admin panel
                             # (leave empty to show all page templates)
 ```
 
